@@ -1,0 +1,57 @@
+import math
+
+
+
+# x  = float(input("enter a first number: "))
+# y  = float(input("enter a second number: "))
+# z = float(input("enter a degrees: "))
+def sum(x,y):
+    return x + y
+def sub(x,y):
+    return x - y
+def multi(x,y):
+    return x * y
+def div(x,y):
+    if y == 0:
+        raise ValueError("Cannot divide by zero")
+    else:
+        return x / y
+
+def sqrt(x):
+    return math.sqrt(x)
+def factorial(x):
+    if x < 0:
+        raise ValueError("Cannot factorial by negative numbe")
+    else:
+        return math.factorial(x)
+def ceil(x):
+    return math.ceil(x)
+def floor(x):
+    return math.floor(x)
+
+def sin(z):
+    return math.sin(math.radians(z))
+def cos(z):
+    return math.cos(math.radians(z))
+def tan(z):
+    return math.tan(math.radians(z))
+def asin(z):
+    return math.degrees(math.asin(z))
+def acos(z):
+    return math.degrees(math.acos(z))
+def atan(z):
+    return math.degrees(math.atan(z))
+
+def log(x):
+    return math.log(x)
+def log10(x):
+    return math.log10(x)
+def log2(x):
+    return math.log2(x)
+def exp(x):
+    return math.exp(x)
+def gcd(x,y):
+    return math.gcd(x,y)
+def lcm(x,y):
+    return math.lcm(x,y)
+
