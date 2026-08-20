@@ -1,0 +1,738 @@
+import json
+import datetime
+import operation
+print(operation.__file__)
+
+
+history_list = []
+
+def save_history():
+    with open("history.json", "w") as file:
+        json.dump(history_list, file, indent=4)
+def first_list():
+    print("=" * 30)
+    print("     ADVANCED CALCULATOR")
+    print("=" * 30)
+
+    print("1. Basic Operations")
+    print("2. Scientific Operations")
+    print("3. Trigonometry")
+    print("4. Advanced Math")
+    print("5. History")
+    print("6. Exit")
+
+    choice = input("Choose: ")
+    return choice
+
+
+def next_operation(result):
+    while True:
+
+        print("=" * 30)
+        print("       Next operation")
+        print("=" * 30)     
+        print("a.Next operation")
+        print("b.End this operation")
+
+        choice2 = input("Choose: ")
+
+        if choice2 =="a":
+            return True
+        elif choice2 == "b":
+            return False
+        else:
+            print("Please enter a number from above list.")
+def basic_operations():
+    x  = float(input("enter a first number: "))
+    y  = float(input("enter a second number: "))
+    while True:
+
+
+        print("=" * 30)
+        print("       BASIC OPERATIONS")
+        print("=" * 30)
+
+        print("1. sum")
+        print("2. sub")
+        print("3. multi")
+        print("4. div")
+        print("5. exit")
+
+
+        choice2 = input("Choose: ")
+
+        if choice2 == "1":
+            print("SUM")
+            result = operation.sum(x, y)
+            history_list.append({
+                'operation':'sum',
+                'x': x,
+                "y": y,
+                'result': result,
+                "time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            })
+            print(f"Result: {result}")
+            while True:
+                continu_operation = next_operation(result)
+                if continu_operation:
+                    print("1. sum")
+                    print("2. sub")
+                    print("3. multi")
+                    print("4. div")
+
+
+                    choice3 = input("Choose: ")
+
+                    if choice3 == "1":
+                        new_number = float(input("Enter new number: "))
+                        last_result = result
+                        result = operation.sum(result, new_number)
+                        print(f"Result: {result}")
+                        history_list.append({
+                            'operation':'sum',
+                            'last_result': last_result,
+                            "new_number": new_number,
+                            'Result': result,
+                            "time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                            })
+                        save_history()
+
+                    elif choice3 == "2":
+                        new_number = float(input("Enter new number: "))
+                        last_result = result
+                        result = operation.sub(result, new_number)
+                        print(f"Result: {result}")
+                        history_list.append({
+    'operation':'sub',
+    'last_result': last_result,
+    "new_number": new_number,
+    'Result': result,
+    "time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            })
+                        save_history()
+                    elif choice3 == "3":
+                        new_number = float(input("Enter new number: "))
+                        last_result = result
+                        result = operation.multi(result, new_number)
+                        print(f"Result: {result}")
+                        history_list.append({
+    'operation':'multi',
+    'last_result': last_result,
+    "new_number": new_number,
+    'Result': result,
+    "time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            })
+                        save_history()
+                    elif choice3 == "4":
+                        new_number = float(input("Enter new number: "))
+                        last_result = result
+                        result = operation.div(result, new_number)
+                        print(f"Result: {result}")
+                        history_list.append({
+    'operation':'div',
+    'last_result': last_result,
+    "new_number": new_number,
+    'Result': result,
+    "time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            })
+                        save_history()
+                    else:                 
+                        print("Please enter a number from above list.")
+                        
+                else:
+                    break
+
+        elif choice2 == "2":
+            print("SUB")
+            result = operation.sub(x, y)
+            history_list.append({
+                "operation": "sub",
+                "x": x ,
+                "y": y ,
+                "Result": result
+            })
+            save_history()
+            print(f"Result: {result}")
+            while True:
+                continu_operation = next_operation(result)
+                if continu_operation:
+                    print("1. sum")
+                    print("2. sub")
+                    print("3. multi")
+                    print("4. div")
+
+
+                    choice3 = input("Choose: ")
+
+                    if choice3 == "1":
+                        new_number = float(input("Enter new number: "))
+                        last_result = result
+                        result = operation.sum(result, new_number)
+                        print(f"Result: {result}")
+                        history_list.append({
+    'operation':'sum',
+    'last_result': last_result,
+    "new_number": new_number,
+    'Result': result,
+    "time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            })
+                        save_history()
+
+                    elif choice3 == "2":
+                        new_number = float(input("Enter new number: "))
+                        last_result = result
+                        result = operation.sub(result, new_number)
+                        print(f"Result: {result}")
+                        history_list.append({
+    'operation':'sub',
+    'last_result': last_result,
+    "new_number": new_number,
+    'Result': result,
+    "time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            })
+                        save_history()
+                    elif choice3 == "3":
+                        new_number = float(input("Enter new number: "))
+                        last_result = result
+                        result = operation.multi(result, new_number)
+                        print(f"Result: {result}")
+                        history_list.append({
+    'operation':'multi',
+    'last_result': last_result,
+    "new_number": new_number,
+    'Result': result,
+    "time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            })
+                        save_history()
+                    elif choice3 == "4":
+                        new_number = float(input("Enter new number: "))
+                        last_result = result
+                        result = operation.div(result, new_number)
+                        print(f"Result: {result}")
+                        history_list.append({
+    'operation':'div',
+    'last_result': last_result,
+    "new_number": new_number,
+    'Result': result,
+    "time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            })
+                        save_history()
+                    else:                 
+                        print("Please enter a number from above list.")
+                        
+                else:
+                    break
+
+        elif choice2 == "3":
+            print("MULTI")
+            result = operation.multi(x, y)
+            history_list.append({
+                "operation": "multi",
+                "x": x ,
+                "y": y ,
+                "Result": result
+            })
+            print(f"Result: {result}")
+            save_history()
+            while True:
+                continu_operation = next_operation(result)
+                if continu_operation:
+                    print("1. sum")
+                    print("2. sub")
+                    print("3. multi")
+                    print("4. div")
+
+
+                    choice3 = input("Choose: ")
+
+                    if choice3 == "1":
+                        new_number = float(input("Enter new number: "))
+                        last_result = result
+                        result = operation.sum(result, new_number)
+                        print(f"Result: {result}")
+                        history_list.append({
+    'operation':'sum',
+    'last_result': last_result,
+    "new_number": new_number,
+    'Result': result,
+    "time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            })
+                        save_history()
+                    elif choice3 == "2":
+                        new_number = float(input("Enter new number: "))
+                        last_result = result
+                        result = operation.sub(result, new_number)
+                        print(f"Result: {result}")
+                        history_list.append({
+    'operation':'sub',
+    'last_result': last_result,
+    "new_number": new_number,
+    'Result': result,
+    "time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            })
+                        save_history()
+                    elif choice3 == "3":
+                        new_number = float(input("Enter new number: "))
+                        last_result = result
+                        result = operation.multi(result, new_number)
+                        print(f"Result: {result}")
+                        history_list.append({
+    'operation':'multi',
+    'last_result': last_result,
+    "new_number": new_number,
+    'Result': result,
+    "time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            })
+                        save_history()
+                    elif choice3 == "4":
+                        new_number = float(input("Enter new number: "))
+                        last_result = result
+                        result = operation.div(result, new_number)
+                        print(f"Result: {result}")
+                        history_list.append({
+    'operation':'div',
+    'last_result': last_result,
+    "new_number": new_number,
+    'Result': result,
+    "time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            })
+                        save_history()
+                    else:                 
+                        print("Please enter a number from above list.")
+                        
+                else:
+                    break
+
+
+        elif choice2 == "4":
+            print("DIV")
+            result = operation.div(x, y)
+            history_list.append({
+                "operation": "div",
+                "x": x ,
+                "y": y ,
+                "Result": result
+            })
+            print(f"Result: {result}")
+            save_history()
+            while True:
+                continu_operation = next_operation(result)
+                if continu_operation:
+                    print("1. sum")
+                    print("2. sub")
+                    print("3. multi")
+                    print("4. div")
+
+
+                    choice3 = input("Choose: ")
+
+                    if choice3 == "1":
+                        new_number = float(input("Enter new number: "))
+                        last_result = result
+                        result = operation.sum(result, new_number)
+                        print(f"Result: {result}")
+                        history_list.append({
+    'operation':'sum',
+    'last_result': last_result,
+    "new_number": new_number,
+    'Result': result,
+    "time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            })
+                        save_history()
+                    elif choice3 == "2":
+                        new_number = float(input("Enter new number: "))
+                        last_result = result
+                        result = operation.sub(result, new_number)
+                        print(f"Result: {result}")
+                        history_list.append({
+    'operation':'sub',
+    'last_result': last_result,
+    "new_number": new_number,
+    'Result': result,
+    "time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            })
+                        save_history()
+                    elif choice3 == "3":
+                        new_number = float(input("Enter new number: "))
+                        last_result = result
+                        result = operation.multi(result, new_number)
+                        print(f"Result: {result}")
+                        history_list.append({
+    'operation':'multi',
+    'last_result': last_result,
+    "new_number": new_number,
+    'Result': result,
+    "time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            })
+                        save_history()
+                    elif choice3 == "4":
+                        new_number = float(input("Enter new number: "))
+                        last_result = result
+                        result = operation.div(result, new_number)
+                        print(f"Result: {result}")
+                        history_list.append({
+    'operation':'div',
+    'last_result': last_result,
+    "new_number": new_number,
+    'Result': result,
+    "time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            })
+                        save_history()
+                    else:                 
+                        print("Please enter a number from above list.")
+                        
+                else:
+                    break
+
+
+        elif choice2 == "5":
+            print("Exit this list.")
+            break
+
+        else:
+            print("Please enter a number from above list.")
+
+
+def scientific_operations():
+
+    while True:
+        x  = float(input("enter a first number: "))
+        print("=" * 30)
+        print("    SCIENTIFIC OPERATIONS")
+        print("=" * 30)
+
+        print("1. sqrt")
+        print("2. factorial")
+        print("3. ceil")
+        print("4. floor")
+        print("5. exit")
+
+        choice2 = input("Choose: ")
+
+        if choice2 == "1":
+            print("SQRT")
+            result = operation.sqrt(x)
+            history_list.append({
+                'operation':'sqrt',
+                'x': x,
+                'result': result,
+                "time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            })
+            save_history()
+            print(f"Result: {result}")
+
+
+        elif choice2 == "2":
+            print("FACTORIAL")
+            result = operation.factorial(x)
+            history_list.append({
+                'operation':'FACTORIAL',
+                'x': x,
+                'result': result,
+                "time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            })
+            save_history()
+            print(f"Result: {result}")
+
+        elif choice2 == "3":
+            print("CEIL")
+            result = operation.ceil(x)
+            history_list.append({
+                'operation':'CEIL',
+                'x': x,
+                'result': result,
+                "time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            })
+            save_history()
+            print(f"Result: {result}")
+
+        elif choice2 == "4":
+            print("FLOOR")
+            result = operation.floor(x)
+            history_list.append({
+                'operation':'FLOOR',
+                'x': x,
+                'result': result,
+                "time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            })
+            save_history()
+            print(f"Result: {result}")
+
+        elif choice2 == "5":
+            print("Exit this list.")
+            break
+
+        else:
+            print("Please enter a number from above list.")
+
+
+def trigonometry():
+
+    while True:
+        z = float(input("enter a degrees: "))
+        print("=" * 30)
+        print("       TRIGONOMETRY")
+        print("=" * 30)
+
+        print("1. sin")
+        print("2. cos")
+        print("3. tan")
+        print("4. asin")
+        print("5. acos")
+        print("6. atan")
+        print("7. exit")
+
+        choice2 = input("Choose: ")
+
+        if choice2 == "1":
+            print("SIN")
+            result = operation.sin(z)
+            history_list.append({
+                'operation':'SIN',
+                'dreege': z,
+                'Result': result,
+                "time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            })
+            save_history()
+            print(f"Result: {result}")
+
+        elif choice2 == "2":
+            print("COS")
+            result = operation.cos(z)
+            history_list.append({
+                'operation':'COS',
+                'dreege': z,
+                'Result': result,
+                "time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            })
+            save_history()
+            print(f"Result: {result}")
+
+        elif choice2 == "3":
+            print("TAN")
+            result = operation.tan(z)
+            history_list.append({
+                'operation':'TAN',
+                'dreege': z,
+                'Result': result,
+                "time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            })
+            save_history()
+            print(f"Result: {result}")
+
+        elif choice2 == "4":
+            print("ASIN")
+            result = operation.asin(z)
+            history_list.append({
+                'operation':'ASIN',
+                'dreege': z,
+                'Result': result,
+                "time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            })
+            save_history()
+            print(f"Result: {result}")
+
+        elif choice2 == "5":
+            print("ACOS")
+            result = operation.acos(z)
+            history_list.append({
+                'operation':'ACOS',
+                'dreege': z,
+                'Result': result,
+                "time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            })
+            save_history()
+            print(f"Result: {result}")
+
+        elif choice2 == "6":
+            print("ATAN")
+            result = operation.atan(z)
+            history_list.append({
+                'operation':'ATAN',
+                'dreege': z,
+                'Result': result,
+                "time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            })
+            save_history()
+            print(f"Result: {result}")
+
+        elif choice2 == "7":
+            print("Exit this list.")
+            break
+
+        else:
+            print("Please enter a number from above list.")
+
+
+def advanced_math():
+    
+    while True:
+        x  = float(input("enter a first number: "))
+        y  = float(input("enter a second number: "))
+        print("=" * 30)
+        print("        ADVANCED MATH")
+        print("=" * 30)
+
+        print("1. log")
+        print("2. log10")
+        print("3. log2")
+        print("4. exp")
+        print("5. gcd")
+        print("6. lcm")
+        print("7. exit")
+
+        choice2 = input("Choose: ")
+
+        if choice2 == "1":
+            print("LOG")
+            result = operation.log(x)
+            history_list.append({
+                'operation':'LOG',
+                'dreege': x,
+                'Result': result,
+                "time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            })
+            save_history()
+            print(f"Result: {result}")
+
+        elif choice2 == "2":
+            print("LOG10")
+            result = operation.log10(x)
+            history_list.append({
+                'operation':'LOG10',
+                'dreege': x,
+                'Result': result,
+                "time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            })
+            save_history()
+            print(f"Result: {result}")
+
+        elif choice2 == "3":
+            print("LOG2")
+            result = operation.log2(x)
+            history_list.append({
+                'operation':'LOG2',
+                'dreege': x,
+                'Result': result,
+                "time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            })
+            save_history()
+            print(f"Result: {result}")
+
+        elif choice2 == "4":
+            print("EXP")
+            result = operation.exp(x)
+            history_list.append({
+                'operation':'EXP',
+                'dreege': x,
+                'Result': result,
+                "time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            })
+            save_history()
+            print(f"Result: {result}")
+
+        elif choice2 == "5":
+            print("GCD")
+            f = int(x)
+            g = int(y)
+            result = operation.gcd(f,g)
+            history_list.append({
+                'operation':'GCD',
+                'dreege': x,
+                'Result': result,
+                "time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            })
+            save_history()
+            print(f"Result: {result}")
+
+        elif choice2 == "6":
+            print("LCM")
+            result = operation.lcm(x,y)
+            history_list.append({
+                'operation':'LCM',
+                'dreege': x,
+                'Result': result,
+                "time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            })
+            save_history()
+            print(f"Result: {result}")
+
+        elif choice2 == "7":
+            print("Exit this list.")
+            break
+
+        else:
+            print("Please enter a number from above list.")
+
+
+def history():
+
+    while True:
+
+        print("=" * 30)
+        print("          HISTORY")
+        print("=" * 30)
+
+        print("1. Show History")
+        print("2. Clear History")
+        print("3. exit")
+
+        choice2 = input("Choose: ")
+
+        if choice2 == "1":
+
+            if len(history_list) == 0:
+                print("History is empty.")
+
+            else:
+                for item in history_list:
+                    print(item)
+
+        elif choice2 == "2":
+
+            history_list.clear()
+            print("History cleared.")
+
+        elif choice2 == "3":
+            print("Exit this list.")
+            break
+
+        else:
+            print("Please enter a number from above list.")
+
+
+def load_history():
+    try:
+        with open("history.json", "r") as file:
+            return json.load(file)
+    except FileNotFoundError:
+        return []
+history_list = load_history()
+
+
+while True:
+
+    choice = first_list()
+
+    if choice == "1":
+        basic_operations()
+
+    elif choice == "2":
+        scientific_operations()
+
+    elif choice == "3":
+        trigonometry()
+
+    elif choice == "4":
+        advanced_math()
+
+    elif choice == "5":
+        history()
+
+    elif choice == "6":
+        print("Exit : BYE")
+        break
+
+    else:
+        print("Please enter a number from above list.")
+
